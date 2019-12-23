@@ -17,7 +17,7 @@ public class PhanSo {
 	
 //ham xay dung mac nhien
 	public PhanSo() {
-		x=4;
+		x=6;
 		y=5;
 	}
 	//ham xay dung nhieu doi so

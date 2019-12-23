@@ -1,0 +1,149 @@
+package Buoi2;
+
+import java.util.Scanner;
+class MyTools {
+	public static int USCLN(int x, int y) {
+		int a = Math.abs(x);
+		for(int i=a; i>1; i--)
+			if( x % i == 0 && y % i == 0)
+				return i;
+		return 1;
+	}
+};
+
+public class PhanSo {
+	private int x;
+	private int y;
+	
+//ham xay dung mac nhien
+	public PhanSo() {
+		x=4;
+		y=5;
+	}
+	//ham xay dung nhieu doi so
+	public PhanSo(int x, int y) {
+		this.x=x;
+		this.y=y;
+	}
+	//ham xay dung sao chep
+	public PhanSo Copy(PhanSo B){
+		x=B.x;
+		y=B.y;
+		return B;
+	}
+	//ham nhap phan so
+	public void NhapPhanSo() {
+		Scanner sc= new Scanner(System.in);
+		do{
+		System.out.println("nhap vao tu so: ");
+		x=sc.nextInt();
+		System.out.println("nhap vao mau so ");
+		y=sc.nextInt();
+		if(y==0) {
+			System.out.println("vui long nhap lai");
+		}
+	}while(y==0);
+	}
+	//ham hien thi phan so
+	public void HienThi(String S){
+		
+		if(x==0)
+			System.out.println(S+"="+0);
+		else if(y==1)
+			System.out.println(S+"="+x);
+		
+		else System.out.println(S +"="+x+"/"+y);
+	}
+	public void toiGian() {
+		int usc = MyTools.USCLN(x,y);
+		x /= usc;
+		y /= usc;
+	}
+	public float giaTriThuc() {
+		return (float)x/y;
+	}
+	//ham nghich dao phan so
+	public boolean nghichDao() {
+		if(x==0) {
+			System.out.println("Khong nghich dao duoc");
+			return false;
+		}
+		int tam;
+		tam=x;
+		x=y;
+		y=tam;
+		return false;	
+	}
+	
+	//phan so gia tri nghich dao
+	public float giatringhichDao(PhanSo a) {
+		int tam;
+		tam=a.x;
+		a.x=a.y;
+		a.y=tam;	
+		return ((float) x)/y;
+	}
+	//ham tinh ra gia tri thuc
+	public float giaTri() {
+		return  x/y;
+	}
+	//ham s sanh voi phan so a
+	public boolean lonHon(PhanSo a) {
+		if(((float)(a.x)/a.y)>((float)(x)/y))
+			return true;
+		return false;
+	
+	}
+	//ham tru phan so
+	public PhanSo tru(PhanSo a) {
+		if (a.y==1) {
+			a.x=x-(y*a.x);
+			a.y=y*a.y;
+		}
+		else
+		{
+			a.x=(x*a.y)-(y*a.x);
+			a.y=y*a.y;
+		}
+		return a;
+	}
+	//ham cong phan so
+	public PhanSo cong(PhanSo a) {
+		if (a.y==1) {
+			a.x=x+(y*a.x);
+			a.y=y;
+		}
+		else
+		{
+			a.x=(x*a.y)+(y*a.x);
+			a.y=y*a.y;
+		}
+		return a;
+	}
+		//ham nha phan so
+	public PhanSo nhan(PhanSo a) {
+		if (a.y==1) {
+			a.x=a.x*x;
+			a.y=a.y*y;
+		}
+		else
+		{
+			a.x=x*a.x;
+			a.y=y*a.y;
+		}
+		return a;
+	}
+		//ham chia phan so
+	public PhanSo chia(PhanSo a) {
+		if (a.y==1) {
+			a.x=a.x;
+			a.y=a.y*x;
+		}
+		else
+		{
+			a.x=a.x*y;
+			a.y=x*a.y;
+		}
+		return a;
+	}
+}
